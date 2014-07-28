@@ -4,19 +4,19 @@ namespace bbook;
 
 abstract class FormValidator {
     private $inputs;
-    private $optionalInputs;
-    private $submittedInputs;
+    private $optional_inputs;
+    private $submitted_inputs;
 
     public function __construct(
         array $inputs = array(),
-        array $optionalInputs = array(),
-        array $submittedInputs = null)
+        array $optional_inputs = array(),
+        array $submitted_inputs = null)
     {
-        $this->inputs = $this->normalizeInputs($inputs);
-        $this->optionalInputs = $optionalInputs;
-        $this->submittedInputs = is_null($submittedInputs)
+        $this->inputs = $this->normalize_inputs($inputs);
+        $this->optional_inputs = $optional_inputs;
+        $this->submitted_inputs = is_null($submitted_inputs)
             ? $_POST
-            : $submittedInputs;
+            : $submitted_inputs;
     }
 
     public function values() {
@@ -24,19 +24,19 @@ abstract class FormValidator {
     }
 
     public function validate() {
-        if($this->isReady()) {
+        if($this->is_ready()) {
             $values = array();
             $errors = array();
 
             foreach(array_keys($this->inputs) as $key) {
-                $value = isset($this->submittedInputs[$key])
-                    ? $this->submittedInputs[$key]
+                $value = isset($this->submitted_inputs[$key])
+                    ? $this->submitted_inputs[$key]
                     : $this->inputs[$key];
 
-                $methodName = "validate_$key";
+                $method_name = "validate_$key";
                 $values[$key] = $value;
-                $error = method_exists($this, $methodName)
-                    ? $this->$methodName($value)
+                $error = method_exists($this, $method_name)
+                    ? $this->$method_name($value)
                     : null;
 
                 if(!is_null($error)) {
@@ -44,12 +44,12 @@ abstract class FormValidator {
                 }
             }
 
-            if(method_exists($this, 'validateMore')) {
-                $moreErrors = $this->validateMore($values);
+            if(method_exists($this, 'more')) {
+                $more_errors = $this->more($values);
 
-                if(!is_null($moreErrors)) {
+                if(!is_null($more_errors)) {
                     $errors = array_merge($errors,
-                        is_array($moreErrors) ? $moreErrors : array($moreErrors));
+                        is_array($more_errors) ? $more_errors : array($more_errors));
                 }
             }
 
@@ -57,18 +57,18 @@ abstract class FormValidator {
         }
     }
 
-    protected function addInputs(array $inputs) {
-        $this->inputs = array_merge($this->inputs, $this->normalizeInputs($inputs));
+    protected function add_inputs(array $inputs) {
+        $this->inputs = array_merge($this->inputs, $this->normalize_inputs($inputs));
     }
 
-    protected function addOptionalInputs(array $inputs) {
-        $this->optionalInputs = array_merge($this->optionalInputs, $inputs);
+    protected function add_optional_inputs(array $inputs) {
+        $this->optional_inputs = array_merge($this->optional_inputs, $inputs);
     }
 
-    private function isReady() {
+    private function is_ready() {
         foreach(array_keys($this->inputs) as $key) {
-            if(!isset($this->submittedInputs[$key])
-                && !in_array($key, $this->optionalInputs))
+            if(!isset($this->submitted_inputs[$key])
+                && !in_array($key, $this->optional_inputs))
             {
                 return false;
             }
@@ -77,18 +77,18 @@ abstract class FormValidator {
         return true;
     }
 
-    private function normalizeInputs(array $inputs) {
-        $normalizedInputs = array();
+    private function normalize_inputs(array $inputs) {
+        $normalized_inputs = array();
         
         foreach($inputs as $i => $v) {
             if(is_int($i)) {
-                $normalizedInputs[$v] = '';
+                $normalized_inputs[$v] = '';
             }
             else {
-                $normalizedInputs[$i] = $v;
+                $normalized_inputs[$i] = $v;
             }
         }
 
-        return $normalizedInputs;
+        return $normalized_inputs;
     }
 }
