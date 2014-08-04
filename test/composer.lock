@@ -1,0 +1,114 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "e31bace08cc9813f0545c97d095e30ab",
+    "packages": [
+        {
+            "name": "bouncers-book/bouncers-book",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/al-codepone/bouncers-book.git",
+                "reference": "851bf19cf9e8fcaebe64b435dcbf5c55a37306e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/al-codepone/bouncers-book/zipball/851bf19cf9e8fcaebe64b435dcbf5c55a37306e6",
+                "reference": "851bf19cf9e8fcaebe64b435dcbf5c55a37306e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "bbook\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ry Ferguson",
+                    "email": "rytf12@gmail.com",
+                    "homepage": "http://ikitovagn.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP form validator",
+            "homepage": "https://github.com/al-codepone/bouncers-book",
+            "keywords": [
+                "Forms",
+                "form",
+                "validator"
+            ],
+            "time": "2014-07-30 22:05:57"
+        },
+        {
+            "name": "corn-wand/corn-wand",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/al-codepone/corn-wand.git",
+                "reference": "a2910783c2922ab0922917dc64080dfc491dec13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/al-codepone/corn-wand/zipball/a2910783c2922ab0922917dc64080dfc491dec13",
+                "reference": "a2910783c2922ab0922917dc64080dfc491dec13",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/corn-wand.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ry Ferguson",
+                    "email": "rytf12@gmail.com",
+                    "homepage": "http://ikitovagn.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP functional library for generating HTML",
+            "homepage": "https://github.com/al-codepone/corn-wand",
+            "keywords": [
+                "function",
+                "functional",
+                "functions",
+                "html"
+            ],
+            "time": "2014-07-02 06:59:38"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "bouncers-book/bouncers-book": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

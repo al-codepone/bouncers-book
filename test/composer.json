@@ -1,0 +1,12 @@
+{
+    "require": {
+        "bouncers-book/bouncers-book": "dev-master",
+        "corn-wand/corn-wand": "0.5.1"
+    },
+    "autoload": {
+        "psr-0": {"silver\\": "src/"},
+        "files": [
+            "src/silver/html/html.php"
+        ]
+    }
+}
