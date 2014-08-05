@@ -18,3 +18,26 @@ function form1(array $input_values, $errors = array()) {
 
         c\div('<input type="submit" value="Submit"/>'));
 }
+
+function form2(array $input_values, $errors = array()) {
+    return c\form(
+        array('method' => 'post'),
+        c\ulist($errors, array('style' => 'color:red')),
+        c\dlinput(
+            'Input 1',
+            array(
+                'id' => 'input1',
+                'value' => $input_values['input1'])),
+
+        c\dscheckboxes(
+            'Pizzas',
+            'pizzas',
+            array(
+                'Pepperoni',
+                'Classic',
+                'Cheese',
+                'Vegetarian'),
+            $input_values['pizzas']),
+
+        c\div('<input type="submit" value="Submit"/>'));
+}
