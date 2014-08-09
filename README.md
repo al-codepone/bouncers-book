@@ -41,6 +41,67 @@ Install using composer:
 }
 ```
 
+## BASIC EXAMPLE
+
+Set up a form validator class:
+
+```php
+namespace silver\validator;
+
+class Validator1 extends \bbook\FormValidator {
+    public function __construct() {
+
+        //list all the form inputs
+        parent::__construct(array(
+            'input1',
+            'input2'));
+    }
+
+    //validate form inputs with validate_ methods
+    //return null if valid
+    protected function validate_input1($value) {
+        if(!preg_match('/^[a-z0-9]{1,10}$/i', $value)) {
+            return 'Input 1 must be 1-10 characters; letters and numbers only';
+        }
+    }
+
+    //validate method for input2
+    protected function validate_input2($value) {
+        if(strlen($value) < 6) {
+            return 'Input 2 must be 6 or more characters';
+        }
+    }
+}
+```
+
+Validate `$_POST` with `validate()`:
+
+```php
+require 'vendor/autoload.php';
+
+$validator = new silver\validator\Validator1();
+
+if(list($input_values, $errors) = $validator->validate()) {
+    $content = $errors
+
+        //re-display form if there is an error
+        ? form1($input_values, $errors)
+
+        //no errors, process form data
+        : c\pre(print_r($input_values, true));
+}
+else {
+
+    //form not submitted, first time user arrives at website
+    $content = form1($validator->values());
+    $autofocus = c\focus('input1');
+}
+
+include 'src/silver/html/template.php';
+```
+
+MIT <http://ryf.mit-license.org/>
+
 ## LICENSE
 
 MIT <http://ryf.mit-license.org/>
