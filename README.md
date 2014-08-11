@@ -173,8 +173,6 @@ class Validator3 extends \bbook\FormValidator {
 }
 ```
 
-MIT <http://ryf.mit-license.org/>
-
 ## LICENSE
 
 MIT <http://ryf.mit-license.org/>
