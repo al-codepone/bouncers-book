@@ -1,8 +1,6 @@
 # Bouncer's Book
 
 Bouncer's Book is a PHP form validator.
-The first release is still in development.
-This readme is unfinished.
 
 ## Documentation
 
@@ -36,7 +34,7 @@ Install using composer:
 ```javascript
 {
     "require": {
-        "bouncers-book/bouncers-book": "dev-master",
+        "bouncers-book/bouncers-book": "0.5.0",
     }
 }
 ```
